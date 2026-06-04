@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全部通知卡樣板（現況）</title>
+<style>
+  :root{--bg:#e9e4dc;--text:#1f1f1f;--muted:#888888;--label:#666}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;color:var(--text);padding:22px 14px}
+  .wrap{max-width:980px;margin:0 auto}
+  h1{font-size:21px;margin:0 0 4px}
+  .intro{color:#5a5a5a;font-size:13px;margin-bottom:6px}
+  .legend{font-size:12px;color:#6a6a6a;background:#fff;border:1px solid #d8d2c8;border-radius:10px;padding:10px 12px;margin-bottom:20px;line-height:1.7}
+  .legend code{background:#f1ece4;border-radius:4px;padding:0 5px}
+  .sec{margin:26px 0 10px;font-size:15px;font-weight:700;color:#3a3a3a;border-left:4px solid #b9b1a4;padding-left:9px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;align-items:start}
+  .case{}
+  .caselabel{font-size:12px;color:#555;margin:0 0 6px;font-weight:600}
+  .caselabel small{display:block;font-weight:400;color:#999;font-size:11px;margin-top:1px}
+  /* LINE bubble */
+  .bub{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.12);max-width:340px}
+  .bub.kilo{max-width:300px}
+  .hd{padding:14px 16px;color:#fff;font-size:14.5px;font-weight:700}
+  .bd{padding:14px 16px}
+  .row{display:flex;font-size:13px;margin:3px 0;line-height:1.5}
+  .row .lb{color:var(--label);min-width:74px;flex-shrink:0}
+  .row .vl{color:#222;word-break:break-word}
+  .row.sm{font-size:12px}
+  .num{font-size:12px;color:#333;margin:3px 0;line-height:1.55;word-break:break-word}
+  .dash{font-size:12px;color:#333;margin:2px 0;line-height:1.55;word-break:break-word}
+  .multi{margin:5px 0}
+  .multi .ml{font-size:11.5px;color:var(--label)}
+  .multi .mv{font-size:12.5px;color:#222;white-space:pre-wrap;word-break:break-word}
+  .faded{color:#bbb;text-decoration:line-through;font-size:12.5px;margin:3px 0}
+  .hl{font-weight:700}
+  .sep{height:1px;background:#eee;margin:9px 0}
+  .ft{border-top:1px solid #eee;padding:11px 14px;text-align:center;font-size:11.5px;color:var(--muted)}
+  .ft.strong{font-size:13px;font-weight:700}
+  .btnish{margin-top:8px;border-radius:8px;padding:8px;text-align:center;color:#fff;font-size:12px;font-weight:600}
+  .note{font-size:11.5px;color:#7a7a7a;margin:6px 0 0;font-style:italic}
+  .plain{background:#06c755;color:#fff;border-radius:14px;padding:14px 16px;font-size:13px;white-space:pre-wrap;max-width:300px;line-height:1.7;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:7px;margin-left:6px;vertical-align:middle}
+  .tag.mega{background:#e3f2fd;color:#1565c0}
+  .tag.kilo{background:#f3e8d8;color:#9a6a1a}
+  .tag.text{background:#e8f5e9;color:#2e7d32}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📨 全部通知卡樣板（現況原貌）</h1>
+  <div class="intro">notify-coaches-service 目前所有 LINE 通知卡，依程式碼忠實重現。確認用，未做任何修改。</div>
+  <div class="legend">
+    版型：<code>mega</code> = 完整大卡、<code>kilo</code> = 精簡小卡、<code>text</code> = 純文字。
+    頂部三行（📅 日期 / ⏰ 時段 / 👤 學員）所有卡一致。
+    顏色取自程式常數：體驗 <code>#4a9c6f</code>、保留 <code>#f39c12</code>、正課 <code>#ffe08b</code>、代課 <code>#d97a5e</code>、MOTI <code>#5a9e9e</code>。
+  </div>
+
+  <!-- ═══════════ 體驗系列 ═══════════ -->
+  <div class="sec">① 體驗系列（mega，header #4a9c6f）— pushLineTrialMessage</div>
+  <div class="grid">
+
+    <div class="case">
+      <div class="caselabel">🔔 體驗預約成功通知 (booked)<small>有諮詢單／完整明細</small></div>
+      <div class="bub">
+        <div class="hd" style="background:#4a9c6f">🔔 體驗預約成功通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-14:45</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="sep"></div>
+          <div class="num">1. 生日：1995-03-12 (31歲)</div>
+          <div class="num">2. 性別：男</div>
+          <div class="num">3. AI 體態分析：是</div>
+          <div class="num">4. 運動目標：增肌、改善體態</div>
+          <div class="num">5. 疾病史：左膝半月板舊傷，下肢負重需留意</div>
+          <div class="num">6. 諮詢備註：希望排晚上時段</div>
+          <div class="num">7. 運動經驗：健身房自主訓練約一年</div>
+          <div class="num">8. 方便時段：平日晚上</div>
+          <div class="num">9. 預約備註：首次體驗</div>
+          <div class="num">10. 談單人員：陳顧問</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="caselabel">🔔 體驗預約成功通知 (booked)<small>無諮詢單（noConsultation）</small></div>
+      <div class="bub">
+        <div class="hd" style="background:#4a9c6f">🔔 體驗預約成功通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-14:45</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="multi"><div class="ml">⚠️ 提示</div><div class="mv">此預約無對應諮詢單資料，僅顯示基本欄位</div></div>
+          <div class="sep"></div>
+          <div class="num">1. 預約備註：首次體驗</div>
+          <div class="num">2. 談單人員：陳顧問</div>
+        </div>
+      </div>
+      <div class="note">＊這就是「學員來源沒帶疾病史」的現況——進不去明細區。</div>
+    </div>
+
+    <div class="case">
+      <div class="caselabel">✏️ 體驗預約變更通知 (updated)<small>只顯示新／舊時段</small></div>
+      <div class="bub">
+        <div class="hd" style="background:#4a9c6f">✏️ 體驗預約變更通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/31 (六)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">10:00-10:45</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="sep"></div>
+          <div class="faded">📅 原本時間　2026/05/30 14:00-14:45</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="caselabel">❌ 體驗預約取消通知 (cancelled)</div>
+      <div class="bub">
+        <div class="hd" style="background:#4a9c6f">❌ 體驗預約取消通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-14:45</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="sep"></div>
+          <div class="multi"><div class="ml">取消原因</div><div class="mv">學員臨時請假，改期再約</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ 保留／封鎖 ═══════════ -->
+  <div class="sec">② 保留／封鎖時段（kilo，header #f39c12）— pushLineFlexMessage<small style="font-weight:400">　2026-05-27：時段一律只顯示開始時段</small></div>
+  <div class="grid">
+    <div class="case">
+      <div class="caselabel">📌 保留通知 (slot_pure_reserved)<small>有填學員＋備註</small></div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#f39c12">📌 保留通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="sep"></div>
+          <div class="multi"><div class="ml">📝 備註</div><div class="mv">暫為學員保留，待回覆</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">📌 保留通知 (slot_pure_reserved)<small>純封鎖時段（學員留白）</small></div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#f39c12">📌 保留通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">📌 保留已取消 (reserved_cancelled)<small>2026-05-27 新增・橘色精簡卡</small></div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#f39c12">📌 保留已取消，時段恢復可預約</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+        </div>
+      </div>
+      <div class="note">＊與「📌 保留通知」對稱，取消保留時送出；學員留白則不顯示該行。</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ 正課系列 ═══════════ -->
+  <div class="sec">③ 正課系列（kilo，header #ffe08b 深色字）— pushLineFlexMessage</div>
+  <div class="grid">
+    <div class="case">
+      <div class="caselabel">🔔 正課預約成功通知 (converted_to_regular)</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#ffe08b;color:#6b4e00">🔔 正課預約成功通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+        </div>
+        <div class="ft strong" style="color:#8a6500">👉 請記得上系統預約正課</div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">❌ 正課預約取消通知 (reverted_from_regular)</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#ffe08b;color:#6b4e00">❌ 正課預約取消通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-14:45</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">✏️ 正課預約變更通知 (regular_updated)</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#ffe08b;color:#6b4e00">✏️ 正課預約變更通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/31 (六)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">10:00-11:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="sep"></div>
+          <div class="faded">📅 原本時段　2026/05/30 14:00-15:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ 代課系列 ═══════════ -->
+  <div class="sec">④ 代課系列（kilo，header #d97a5e）— pushLineSubstitutionMessage</div>
+  <div class="grid">
+    <div class="case">
+      <div class="caselabel">🔔 代課預約成功通知 / 已完成指派（created）<small>指派者收的版本帶交接按鈕</small></div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#d97a5e">🔔 代課預約成功通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">李小華</span></div>
+          <div class="row"><span class="lb">代誰的課</span><span class="vl">張教練</span></div>
+          <div class="multi"><div class="ml">代課原因</div><div class="mv">原教練臨時有事</div></div>
+        </div>
+        <div class="ft">👉 已排定由您代上此課
+          <div class="btnish" style="background:#d97a5e">✏️ 填寫交接資訊</div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">✏️ 代課預約變更通知 (updated)</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#d97a5e">✏️ 代課預約變更通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/31 (六)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">10:00-11:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">李小華</span></div>
+          <div class="faded">📅 原本時段　2026/05/30 14:00-15:00</div>
+        </div>
+        <div class="ft">👉 此代課時段已變更，請留意新時段</div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">❌ 代課取消通知 (cancelled)</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#d97a5e">❌ 代課取消通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">李小華</span></div>
+        </div>
+        <div class="ft">👉 此代課已取消，您不需代上此課</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ 交接 ═══════════ -->
+  <div class="sec">⑤ 代課交接（kilo，header #d97a5e）— pushLineFlexMessage</div>
+  <div class="grid">
+    <div class="case">
+      <div class="caselabel">📋 代課交接資訊（送給代課教練）</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#d97a5e">📋 代課交接資訊</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">李小華</span></div>
+          <div class="sep"></div>
+          <div class="multi"><div class="ml">📋 交接內容</div><div class="mv">上半身訓練，肩膀舊傷避免過頭推舉</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">✅ 交接資訊已送出（回執給原教練）</div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#d97a5e">✅ 交接資訊已送出</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00-15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">李小華</span></div>
+          <div class="sep"></div>
+          <div class="multi"><div class="ml">📋 交接內容</div><div class="mv">上半身訓練，肩膀舊傷避免過頭推舉</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ MOTI 系列 ═══════════ -->
+  <div class="sec">⑥ MOTI 系列（header #5a9e9e）— pushLineMotiMessage</div>
+  <div class="grid">
+    <div class="case">
+      <div class="caselabel">🔔 MOTI 新客預約通知 (created・new・60分)<span class="tag mega">mega</span></div>
+      <div class="bub">
+        <div class="hd" style="background:#5a9e9e">🔔 MOTI 新客預約通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00 ~ 15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="row"><span class="lb">📋 類型</span><span class="vl hl" style="color:#5a9e9e">新客（一般檢測）</span></div>
+          <div class="sep"></div>
+          <div class="dash">-生日：1995-03-12（31歲）</div>
+          <div class="dash">-性別：男</div>
+          <div class="dash">-運動目標：增肌、改善體態</div>
+          <div class="dash">-疾病史：左膝半月板舊傷</div>
+          <div class="dash">-疾病史備註：下肢負重需留意</div>
+          <div class="dash">-過往運動經驗：健身房約一年</div>
+          <div class="dash">-電話：0912-345-678</div>
+          <div class="dash">-email：ming@example.com</div>
+          <div class="sep"></div>
+          <div class="multi"><div class="ml">📝 備註</div><div class="mv">行政備註內容</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">🔔 MOTI 複測預約通知 (created・retest・30分)<span class="tag mega">mega</span></div>
+      <div class="bub">
+        <div class="hd" style="background:#5a9e9e">🔔 MOTI 複測預約通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00 ~ 14:30</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="row"><span class="lb">📋 類型</span><span class="vl hl" style="color:#5a9e9e">複測</span></div>
+          <div class="sep"></div>
+          <div class="dash">-生日：1995-03-12（31歲）</div>
+          <div class="dash">-性別：男</div>
+          <div class="dash">-運動目標：增肌</div>
+          <div class="dash">-疾病史：左膝半月板舊傷</div>
+          <div class="dash">-疾病史備註：未填寫</div>
+          <div class="dash">-過往運動經驗：健身房約一年</div>
+          <div class="dash">-電話：0912-345-678</div>
+          <div class="dash">-email：ming@example.com</div>
+          <div class="sep"></div>
+          <div style="text-align:center;font-size:11px;color:#888;margin:6px 0">━━ 上次檢測 ━━</div>
+          <div class="dash">-檢測日：2026-02-10</div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">🔔 MOTI 一站式預約通知 (created・onestop・90分)<small>2026-05-27 新增類型</small><span class="tag mega">mega</span></div>
+      <div class="bub">
+        <div class="hd" style="background:#5a9e9e">🔔 MOTI 一站式預約通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00 ~ 15:30</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="row"><span class="lb">📋 類型</span><span class="vl hl" style="color:#5a9e9e">一站式</span></div>
+          <div class="sep"></div>
+          <div class="dash">-生日：1995-03-12（31歲）</div>
+          <div class="dash">-性別：男</div>
+          <div class="dash">-運動目標：增肌、改善體態</div>
+          <div class="dash">-疾病史：無</div>
+          <div class="dash">-過往運動經驗：無</div>
+          <div class="dash">-電話：0912-345-678</div>
+          <div class="dash">-email：ming@example.com</div>
+        </div>
+      </div>
+      <div class="note">＊時長 90 分；新客／複測自動判定維持，行政手選為準。</div>
+    </div>
+    <div class="case">
+      <div class="caselabel">✏️ MOTI 預約變更通知 (updated)<span class="tag mega">mega</span></div>
+      <div class="bub">
+        <div class="hd" style="background:#5a9e9e">✏️ MOTI 新客預約變更通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/31 (六)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">10:00 ~ 11:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="faded">📅 原本時間　2026/05/30 14:00 ~ 15:00</div>
+          <div class="row"><span class="lb">📋 類型</span><span class="vl hl" style="color:#5a9e9e">新客（一般檢測）</span></div>
+          <div class="sep"></div>
+          <div class="dash">-生日：1995-03-12（31歲）</div>
+          <div class="dash">-性別：男 …（其餘明細同 created）</div>
+        </div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caselabel">❌ MOTI 預約取消通知 (cancelled)<span class="tag kilo">kilo</span></div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#5a9e9e">❌ MOTI 預約取消通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30 (五)</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">14:00 ~ 15:00</span></div>
+          <div class="row"><span class="lb">👤 學員</span><span class="vl">王小明</span></div>
+          <div class="sep"></div>
+          <div class="row"><span class="lb">📞 電話</span><span class="vl">0912-345-678</span></div>
+          <div class="row"><span class="lb">📋 類型</span><span class="vl">新客（一般檢測）</span></div>
+          <div class="multi"><div class="ml">📝 取消原因</div><div class="mv">學員改期</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ 其他 ═══════════ -->
+  <div class="sec">⑦ 其他</div>
+  <div class="grid">
+    <div class="case">
+      <div class="caselabel">🔔 課表回報通知 (class_record_report)<span class="tag text">純文字</span></div>
+      <div class="plain">🔔 課表回報通知
+
+📅 2026/05/30
+👤 王小明
+📋 一對一肌力訓練</div>
+      <div class="note">＊純文字推播，非 Flex 卡；行政關心／特殊備註用。</div>
+    </div>
+    <div class="case">
+      <div class="caselabel">📢 學員請求通知 / 💬 學員新訊息<span class="tag kilo">kilo</span><small>chat-notify 預設卡</small></div>
+      <div class="bub kilo">
+        <div class="hd" style="background:#06c755">📢 學員請求通知</div>
+        <div class="bd">
+          <div class="row"><span class="lb">📅 日期</span><span class="vl">2026/05/30</span></div>
+          <div class="row"><span class="lb">⏰ 時段</span><span class="vl">—</span></div>
+          <div class="row"><span class="lb">📋 課程</span><span class="vl">一對一</span></div>
+        </div>
+        <div class="ft">👉 請開啟教練系統查看</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
